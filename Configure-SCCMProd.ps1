@@ -242,7 +242,7 @@ New-Item -ItemType Directory -Path C:\InstallBinaries\CMUpdates
 #Eval 2203 commandline
 #start-process "C:\InstallBinaries\CMSource\SMSSETUP\BIN\X64\setupdl.exe" -ArgumentList "/noui C:\InstallBinaries\CMUpdates" -wait
 #Eval 2303 commandline
-#start-process "C:\InstallBinaries\CMSource\cd.retail\SMSSETUP\BIN\X64\setupdl.exe" -ArgumentList "/noui C:\InstallBinaries\CMUpdates" -wait
+start-process "C:\InstallBinaries\CMSource\cd.retail\SMSSETUP\BIN\X64\setupdl.exe" -ArgumentList "/noui C:\InstallBinaries\CMUpdates" -wait
 
 $ConfigIni = @"
 [Identification]
