@@ -235,7 +235,7 @@ Log-Item -logline "Extract Configmgr Installation binaries from self extracting 
 #2203 commandline
 #Start-Process -Filepath "C:\InstallBinaries\cmsetup.exe" -ArgumentList ('/Auto "' + 'C:\InstallBinaries\CMSource' + '"') -wait
 #2303 commandline
-Start-Process -Filepath "C:\InstallBinaries\cmsetup.exe" -ArgumentList ('/Extract:"' + 'C:\InstallBinaries\CMSource' + '"') -wait
+Start-Process -Filepath "C:\InstallBinaries\cmsetup.exe" -ArgumentList ('/Extract:"' + 'C:\InstallBinaries\CMSource' + '" /passive') -wait
 
 Log-Item -logline "Downloading Configmgr updates (prereqs)" -severity "Info"
 New-Item -ItemType Directory -Path C:\InstallBinaries\CMUpdates
