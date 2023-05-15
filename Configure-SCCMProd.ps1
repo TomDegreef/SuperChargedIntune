@@ -148,7 +148,7 @@ $ADKUrl = "https://go.microsoft.com/fwlink/?linkid=2196127"
 # Windows 11 22H2 ADK PE addon
 $ADKAddon = "https://go.microsoft.com/fwlink/?linkid=2196224"
 # SCCM
-$cmurl = "https://go.microsoft.com/fwlink/?linkid=2093192"
+$cmurl = "https://go.microsoft.com/fwlink/?linkid=2195628" 
 # SQL 2022 Dev edition
 $SQLUrl = "https://go.microsoft.com/fwlink/?linkid=2215158"
 # SQL 2022 Management Studio
