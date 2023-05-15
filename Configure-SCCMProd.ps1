@@ -148,7 +148,8 @@ $ADKUrl = "https://go.microsoft.com/fwlink/?linkid=2196127"
 # Windows 11 22H2 ADK PE addon
 $ADKAddon = "https://go.microsoft.com/fwlink/?linkid=2196224"
 # SCCM
-$cmurl = "https://go.microsoft.com/fwlink/?linkid=2195628" 
+#$cmurl = "https://go.microsoft.com/fwlink/?linkid=2093192" #CM2203
+$cmurl = "https://go.microsoft.com/fwlink/?linkid=2195628" #cm2303
 # SQL 2022 Dev edition
 $SQLUrl = "https://go.microsoft.com/fwlink/?linkid=2215158"
 # SQL 2022 Management Studio
@@ -231,11 +232,17 @@ Restart-Service -Name MSSQLSERVER -Force
 
 #Extract Configmgr Installation
 Log-Item -logline "Extract Configmgr Installation binaries from self extracting zipfile" -severity "Info"
+#2203 commandline
+#Start-Process -Filepath "C:\InstallBinaries\cmsetup.exe" -ArgumentList ('/Auto "' + 'C:\InstallBinaries\CMSource' + '"') -wait
+#2303 commandline
 Start-Process -Filepath "C:\InstallBinaries\cmsetup.exe" -ArgumentList ('/Extract:"' + 'C:\InstallBinaries\CMSource' + '"') -wait
 
 Log-Item -logline "Downloading Configmgr updates (prereqs)" -severity "Info"
 New-Item -ItemType Directory -Path C:\InstallBinaries\CMUpdates
-start-process "C:\InstallBinaries\CMSource\SMSSETUP\BIN\X64\setupdl.exe" -ArgumentList "/noui C:\InstallBinaries\CMUpdates" -wait
+#Eval 2203 commandline
+#start-process "C:\InstallBinaries\CMSource\SMSSETUP\BIN\X64\setupdl.exe" -ArgumentList "/noui C:\InstallBinaries\CMUpdates" -wait
+#Eval 2303 commandline
+#start-process "C:\InstallBinaries\CMSource\cd.retail\SMSSETUP\BIN\X64\setupdl.exe" -ArgumentList "/noui C:\InstallBinaries\CMUpdates" -wait
 
 $ConfigIni = @"
 [Identification]
@@ -291,7 +298,10 @@ $ConfigIni | out-file C:\InstallBinaries\Configmgr.ini
 
 Log-Item -logline "Starting Configmgr installation" -severity "Info"
 Log-Item -logline "Patience is a virtue, this will take some time to complete !" -severity "Info"
-start-process "C:\InstallBinaries\CMSource\SMSSETUP\BIN\X64\setup.exe" -argumentlist "/SCRIPT C:\InstallBinaries\Configmgr.ini" -wait
+#2203 commandline
+#start-process "C:\InstallBinaries\CMSource\SMSSETUP\BIN\X64\setup.exe" -argumentlist "/SCRIPT C:\InstallBinaries\Configmgr.ini" -wait
+#2303 commandline
+start-process "C:\InstallBinaries\CMSource\cd.retail\SMSSETUP\BIN\X64\setup.exe" -argumentlist "/SCRIPT C:\InstallBinaries\Configmgr.ini" -wait
 
 Log-Item -logline "Installation of configmgr is finished! Pausing 5 minutes for things to settle down" -severity "Info"
 Start-Sleep -Seconds 300
