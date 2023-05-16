@@ -473,7 +473,7 @@ if((Get-Module ConfigurationManager) -eq $null) {
 push-location
 Set-Location "$($SiteCode):\"
 Log-Item -logline "Granting full administrator permissions to group" -severity "Info"
-New-CMAdministrativeUser -name "GG_ConfigMgr_Full_Administrator" -RoleName "Full Administrator"
+New-CMAdministrativeUser -name "oscc1\GG_ConfigMgr_Full Administrator" -RoleName "Full Administrator"
 Log-Item -logline "Granted full administrator permissions to group" -severity "Info"
 pop-locatoin
 
