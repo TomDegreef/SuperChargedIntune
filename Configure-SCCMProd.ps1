@@ -320,7 +320,7 @@ if ($DMPState -ne "Running") {
   Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\SMS\Components\SMS_Executive\Threads\SMS_DMP_DOWNLOADER" -Name "Requested Operation" -Value "Start"
   Start-sleep -Seconds 30
 }
-
+<#
 $retrytimes = 0
 $downloadretrycount = 0
 $updatepack = getupdate
@@ -465,7 +465,7 @@ while($updatepack -ne "")
         }
     }
 }
-
+#>
 Log-Item -logline "Import PowerShell Configuration Manager Module" -severity "Info"
 if((Get-Module ConfigurationManager) -eq $null) {
     Import-Module "$($ENV:SMS_ADMIN_UI_PATH)\..\ConfigurationManager.psd1"  
