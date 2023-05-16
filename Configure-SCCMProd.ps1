@@ -466,6 +466,19 @@ while($updatepack -ne "")
     }
 }
 
+Log-Item -logline "Import PowerShell Configuration Manager Module" -severity "Info"
+if((Get-Module ConfigurationManager) -eq $null) {
+    Import-Module "$($ENV:SMS_ADMIN_UI_PATH)\..\ConfigurationManager.psd1"  
+}
+push-location
+Set-Location "$($SiteCode):\"
+Log-Item -logline "Granting full administrator permissions to group" -severity "Info"
+New-CMAdministrativeUser -name "GG_ConfigMgr_Full_Administrator" -RoleName "Full Administrator"
+Log-Item -logline "Granted full administrator permissions to group" -severity "Info"
+pop-locatoin
+
+
+
 Log-Item -logline "Configmgr update installed ! Finally ..." -severity "Info"
 Log-Item -logline "disable IE ESC" -severity "Info"
 #disable IE ESC 
