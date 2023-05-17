@@ -497,3 +497,5 @@ Log-Item -logline "Finished upgrade of configmgr console" -severity "Info"
 Log-Item -logline "Done with configmgr setup! Rebooting now.." -severity "Info"
 Restart-Computer -Force
 #>
+
+copy-item -Path "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.15\Downloads\0\Configure-CMG.ps1" -Destination C:\Users\Public\Desktop\
