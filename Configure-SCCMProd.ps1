@@ -478,7 +478,7 @@ Log-Item -logline "Granted full administrator permissions to group" -severity "I
 pop-locatoin
 
 
-
+<#
 Log-Item -logline "Configmgr update installed ! Finally ..." -severity "Info"
 Log-Item -logline "disable IE ESC" -severity "Info"
 #disable IE ESC 
@@ -488,10 +488,12 @@ Set-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
 Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
 Stop-Process -Name Explorer
 Write-Host "IE Enhanced Security Configuration (ESC) has been disabled." -ForegroundColor Green
-
+#>
+<#
 Log-Item -logline "Starting upgrade of configmgr console" -severity "Info"
 $arguments = "DefaultSiteServerName=" + $env:computername + "." + $fulldomain + " /q"
 Start-Process "C:\Program Files\Microsoft Configuration Manager\tools\ConsoleSetup\ConsoleSetup.exe" -ArgumentList $arguments -wait
 Log-Item -logline "Finished upgrade of configmgr console" -severity "Info"
 Log-Item -logline "Done with configmgr setup! Rebooting now.." -severity "Info"
 Restart-Computer -Force
+#>
